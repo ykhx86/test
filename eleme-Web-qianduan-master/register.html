@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link href="framework/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="framework/reset.css" rel="stylesheet">
+	<link href="css/register.css" rel="stylesheet">
+	<title>饿了么 用户注册</title>
+	<script>
+		function register() {
+			// window.localStorage.clear();
+			var username = document.getElementById("reg-username").value;
+			var password = document.getElementById("reg-password").value;
+			var confirmPassword = document.getElementById("confirm-password").value;
+
+			// 检查用户名是否已被注册
+			if (username != '' && password != '' && confirmPassword != '') {
+				if (localStorage.getItem(username)) {
+					alert("该用户名已被注册，请选择其他用户名。");
+				} else if (password !== confirmPassword) {
+					alert("确认密码不匹配，请重新输入。");
+				} else {
+					// 注册成功，将用户名和密码保存到localStorage
+					localStorage.setItem(username, password);
+					alert("注册成功，请登录。");
+					window.location.href = "login.html";
+				}
+			} else {
+				alert("请填写完整信息再提交！")
+				return false;
+			}
+		}
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<!-- header部分 -->
+		<header>
+			<p>用户注册</p>
+		</header>
+
+		<!-- 表单部分 -->
+
+		<ul class="form-box">
+			<li>
+				<div class="title">
+					用户名：
+				</div>
+				<div class="content">
+					<input type="text" placeholder="用户名" id="reg-username" required>
+				</div>
+			</li>
+			<li>
+				<div class=" title">
+					密码：
+				</div>
+				<div class="content">
+					<input type="password" placeholder="密码" id="reg-password" required>
+				</div>
+			</li>
+			<li>
+				<div class=" title">
+					确认密码：
+				</div>
+				<div class="content">
+					<input type="password" placeholder="确认密码" id="confirm-password" required>
+				</div>
+			</li>
+
+		</ul>
+
+		<div class="button-login">
+			<button onclick="register()">注册</button>
+		</div>
+
+
+		<!-- 底部菜单部分 -->
+		<ul class="footer">
+			<li onclick="location.href='index.html'">
+				<i class="fa fa-home"></i>
+				<p>首页</p>
+			</li>
+			<li>
+				<i class="fa fa-compass"></i>
+				<p>发现</p>
+			</li>
+			<li onclick="location.href='orderList.html'">
+				<i class="fa fa-file-text-o"></i>
+				<p>订单</p>
+			</li>
+			<li onclick="location.href='login.html'">
+				<i class="fa fa-user-o"></i>
+				<p>我的</p>
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>
